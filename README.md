@@ -39,3 +39,51 @@ These are listed in the order of increasing complexity (and thus point value). F
 (5 points)
 
 This application should load an image and when clicked display information about the pixel where the click occurs. Here is what my solution for this application looks like:
+
+<img src="http://www.cs.unc.edu/~kmp/comp401fall18/assignments/a7/a7-pixel-inspector.png" width="500">
+
+## ImageAdjuster
+(10 points)
+
+This application should provide three sliders that adjust the image as follows:
+
+* Blur
+  Replaces each pixel as the average of the pixels around it. You can think of the slider as controlling the size of a square area centered on each pixel to be averaged. So a blur size of 0 would mean no blurring. A blur size of 1 would mean averaging all adjacent pixels. A blur size of 2 would be averaging all pixels with x and y coordinates that were +/- 2 of each pixel, etc.
+
+* Brightness
+  Adjusts the pixels toward black or white according to a slider. In my solution, the slider runs from -100 representing black, 0 representing the original pixel value, and 100 representing white.
+
+* Saturation
+  Adjusts the pixels toward gray scale or oversaturation. In my solution, -100 means no color, 0 means the original image, and 100 means fully saturated. The formula for this is as follows:
+
+  Let ```f``` be the saturation factor defined by the slider (-100 to 100).
+
+  Let ```b``` be the brightness (i.e. intensity) of the original pixel.
+
+  There are two cases:
+    * For saturation factors from -100 to 0
+      For each component of the pixel (i.e., red, green, blue), the new value is: 
+      ``` new = old * (1.0 + (f / 100.0) ) - (b * f / 100.0)```
+    * For saturation factors from 0 to 100
+      First determine which component (i.e., red, green, or blue) of the pixel is largest. Call this value ```lc``` for "largest component". Then calculate the new value of each component as:
+      ```new = old * ((lc + ((1.0 - lc) * (f / 100.0))) / lc)```
+      
+      Note: you will need to catch the special case of black pixels where the largest component is or is very close to zero (use 0.01 as your zero threshold). These remain black no matter what the value of f is and the above formulas would cause a divide by zero exception in the formula above if the largest component was in fact 0.
+
+These adjustments should be cumulative. In other words, you should be able to move all three sliders and see an image that is blurred, brightness adjusted, and saturation adjusted simultaneously. My version of this mini-application looks like this:
+
+<img src="http://www.cs.unc.edu/~kmp/comp401fall18/assignments/a7/a7-image-adjuster.png" width="500">
+
+## FramePuzzle
+(15 points)
+
+This application should create a 5x5 grid of PictureView objects that each display a portion of the original picture. The lower right corner should be replaced with a Picture filled with a solid color. Clicking on a row or column in line with the "blank" tile should move the portions over (i.e., slide over) to fill the blank space, resulting in the blank space now being where the click occured. Using the keyboard up, down, left, and right keys should swap the blank space with the adjacent portion in the appropriate direction. Getting the boundaries between the PictureView objects to line up seamlessly can be difficult (especially if the image dimensions are not a perfect multiple of 5) so don't worry if you see discontinuities.
+
+My version of this looks like this (it is shown after I’ve moved some of the pieces of the puzzle around already):
+
+<img src="http://www.cs.unc.edu/~kmp/comp401fall18/assignments/a7/a7-frame-puzzle.png" width="500">
+
+## Turning In Your Code
+
+We'll be grading these by hand, so there won't be an autograder. As usual, we'll be looking for a submit branch in your repo and that is what we'll grade.
+
