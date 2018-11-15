@@ -9,7 +9,8 @@ import javax.swing.JPanel;
 public class A7SetupTest {
 	public static void main(String[] args) throws IOException {
 		Picture p = A7Helper.readFromURL("http://www.cs.unc.edu/~kmp/kmp-in-namibia.jpg");
-		SimplePictureViewWidget simple_widget = new SimplePictureViewWidget(p, "KMP in Namibia");
+		p.setCaption("KMP in Namibia");
+		SimplePictureViewWidget simple_widget = new SimplePictureViewWidget(p);
 		
 		JFrame main_frame = new JFrame();
 		main_frame.setTitle("Assignment 7 Simple Picture View");
