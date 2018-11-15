@@ -27,7 +27,7 @@ The class A7SetupTest is a simple test application that creates a Picture object
 
 If your setup is working correctly, you should be able to run A7SetupTest and see me appear on the screen along with the caption "KMP in Namibia". Mouse clicks on the image should print coordinates of the click to the console. If all is well, it will look like this:
 
-![A8SetupTest Screenshot](http://www.cs.unc.edu/~kmp/comp401fall18/assignments/a7/a7-setup.png |  width=500)
+<img src="http://www.cs.unc.edu/~kmp/comp401fall18/assignments/a7/a7-setup.png" width="500"</img>
 
 Follow the pattern above to create one or more of the following mini-applications. You are free to use a different image than the one of me used in the test application, but please don't use anything too large, copyrighted, or NSFW. Also, because we are loading these images by URL, they need to be web accessible. 
 
