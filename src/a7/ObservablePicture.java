@@ -3,7 +3,7 @@ package a7;
 public interface ObservablePicture extends Picture {
 	
 	// Registers an ROIObserver assuming a region that is the whole picture.
-	default void registerROIObserver(ROIObserver observer) {
+	default void registerROIObserver(ROIObserver observer) { //Assumes region that is in whole picture
 		registerROIObserver(observer, new RegionImpl(0,0,getWidth()-1,getHeight()-1));
 	}
 	

@@ -9,12 +9,12 @@ import javax.swing.JPanel;
 
 public class SimplePictureViewWidget extends JPanel implements MouseListener {
 
-	private PictureView picture_view;
+	private PictureView picture_view; //encapuslates a picture view
 	
 	public SimplePictureViewWidget(Picture picture) {
 		setLayout(new BorderLayout());
 		
-		picture_view = new PictureView(picture.createObservable());
+		picture_view = new PictureView(picture.createObservable()); //makes it observable
 		picture_view.addMouseListener(this);
 		add(picture_view, BorderLayout.CENTER);
 		
@@ -23,7 +23,7 @@ public class SimplePictureViewWidget extends JPanel implements MouseListener {
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent e) {
+	public void mouseClicked(MouseEvent e) { //need to figure out these mouse/keyboard effects /listener
 		System.out.println("You clicked on the frame at: " + e.getX() + "," + e.getY());
 	}
 

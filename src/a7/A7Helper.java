@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
 
 public class A7Helper {
 
-	public static Picture readFromURL(String url) throws IOException {
+	public static Picture readFromURL(String url) throws IOException { //this thing throws an io exception, so you have to specify it in class that uses this method
 		BufferedImage bi = ImageIO.read(new URL(url));
 		Pixel[][] parray = new Pixel[bi.getWidth()][bi.getHeight()];
 		for (int x=0; x<bi.getWidth(); x++) {

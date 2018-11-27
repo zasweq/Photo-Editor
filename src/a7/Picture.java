@@ -94,7 +94,7 @@ public interface Picture {
 	
 	// Wraps this picture into an ObservablePicture and returns it.
 	
-	default public ObservablePicture createObservable() {
+	default public ObservablePicture createObservable() { //new KNP added
 		return new ObservablePictureImpl(this);
 	}
 

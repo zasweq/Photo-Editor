@@ -1,24 +1,28 @@
 package a7;
-import java.awt.Canvas;
+import java.awt.Canvas; //blank rectangular area
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+//will need to add mouse listeners and key listeners
+//Place this object into a UI container, attach listeners to automatically respond to UI events
+
+//Picture view paints the encapsualted picture onto screen, it registers itself as an observer and if the picture notifies update it will repaint
 
 public class PictureView extends Canvas implements ROIObserver {
 
 	private ObservablePicture picture;
-	private BufferedImage buffered_image;
+	private BufferedImage buffered_image; //what is a buffered image?
 	
 	public PictureView(ObservablePicture p) {
 		setPicture(p);
 	}
 
 	public void setPicture(ObservablePicture p) {
-		if (picture == p) {
+		if (picture == p) { //if same picture
 			return;
 		}
 		
-		if (picture != null) {
+		if (picture != null) { //if different picture unregister observer
 			picture.unregisterROIObserver(this);
 		}
 		
